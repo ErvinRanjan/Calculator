@@ -51,7 +51,7 @@ function xnumop(){
         {break;}
         
     }
-     console.log(num);
+
 }
 
 //add func
@@ -170,7 +170,8 @@ function Del(){
 let displayarr;
 function extractgroups()
 {
-    regex1=/[{}()\[\]=]+/;
+    const regex1=/[{}()\[\]=]+/;
+    console.log(displaystr);
     displayarr=displaystr.split(regex1);
     console.log(displayarr);
 }
@@ -197,6 +198,7 @@ elminus.addEventListener("click",display);
 elcross.addEventListener("click",display);
 elequals.addEventListener("click",display);
 //elequals.addEventListener("click",extractgroups);
+elequals.addEventListener("click",extractgroups);
 elequals.addEventListener("click",xnumop);
 elequals.addEventListener("click",execute);
 eldisplay.addEventListener("change",function(){
@@ -206,4 +208,4 @@ elClear.addEventListener("click",clear);
 elenable.addEventListener("click",enable);
 elDel.addEventListener("click",Del);
 eldark.addEventListener("click",darkmode);
-elequals.addEventListener("click",exec1);
+
