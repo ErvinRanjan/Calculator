@@ -1,0 +1,130 @@
+#heading{
+color:black;
+text-align: center;
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#mbody{
+    background-color:#54524e;
+    height:375px;
+    width: 300px;
+    top:150px;
+    left: 600px;
+    position:absolute;
+    outline-color: black;
+    outline-width: 10px;
+    outline-style: auto;
+    border-color: black;
+    border-radius: 20px;
+    
+}
+
+
+#display{
+    height:50px;
+    width: 172px;
+    position: relative;
+    top:20px;
+    left:30px;
+    background-color: #d5e5da;
+    border-radius: 10%;
+    font-size: x-large;
+    /* font-family: 'Times New Roman', Times, serif;
+    font-weight: bold; */
+    text-align: center;
+    
+}
+#equals{
+    height: 52px;
+    width: 52px;
+    position:absolute;
+    top:20px;
+    left:225px;
+    font-size: x-large;
+    border-radius: 15%;
+}
+
+.buttons{
+    height:50px;
+    width:50px;
+    font-size: x-large;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15%;
+    
+}
+
+#table{
+    top: 35px;
+    left:25px;
+    position: relative;
+   
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+#enable_typing{
+    height:fit-content;
+    width:fit-content;
+    top: 10px;
+    position: absolute;
+}
+img{
+    height:39px;
+    width:39px;
+    position: relative;
+}
+
+#dark_or_default{
+    position:absolute;
+    top:10px;
+    left: 60px;
+}
+
+#Clear{
+    height:50px;
+    width:50px;
+    font-size: large;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15%;
+    padding-left:1.7px ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+#Ans{
+    height:50px;
+    width:50px;
+    font-size: large;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15%;
+    padding-left:2.5px ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+#Delete{
+    height:50px;
+    width:50px;
+    font-size: large;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15%;
+    padding-left:2.5px ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
