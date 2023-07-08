@@ -23,13 +23,27 @@ let elheading=document.getElementById("heading");
 let ellight=document.getElementById("light");
 let elDel= document.getElementById("Delete");
 
-//display func
-let displaystr="";
-function display()
-{
-    displaystr+=this.textContent;
-    eldisplay.value=displaystr;
+
+const display = (str7) => {eldisplay.value=str7;}
+
+const c_createdisplaystr = () => {
+    let displaystr = "";
+    return {
+        "click":(obj) => {
+
+        if(obj==elequals);
+        else
+        displaystr += obj.textContent;
+
+        return displaystr;},
+        "keyboard":() => {
+            displaystr=eldisplay.value;
+            return displaystr;
+        }
+}  
 }
+const createdisplaystrbyclick = c_createdisplaystr().click;
+const createdisplaystrbykeyboard = c_createdisplaystr().keyboard;
 
 
 const multi_or_div = (str1) => {
@@ -80,6 +94,7 @@ const multi_or_div = (str1) => {
 
     return result;
 }
+
 const add_or_sub = (str2) => {
     const regex4=/[\u002B\u002D=]/;// \u002B,\u002D are unicode for add,sub
     const regex5=/[0-9]+/;
@@ -266,24 +281,21 @@ function Del(){
 
 
 //event calls
-elone.addEventListener("click",display);
-eltwo.addEventListener("click",display);
-elthree.addEventListener("click",display);
-elfour.addEventListener("click",display);
-elfive.addEventListener("click",display);
-elsix.addEventListener("click",display);
-elseven.addEventListener("click",display);
-eleight.addEventListener("click",display);
-elnine.addEventListener("click",display);
-elzero.addEventListener("click",display);
-elplus.addEventListener("click",display);
-elminus.addEventListener("click",display);
-elcross.addEventListener("click",display);
-elequals.addEventListener("click",display);
-elequals.addEventListener("click",solve);
-eldisplay.addEventListener("change",function(){
-    displaystr=eldisplay.value;
-});
+elone.addEventListener("click",function(){display(createdisplaystrbyclick(this))});
+eltwo.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elthree.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elfour.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elfive.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elsix.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elseven.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+eleight.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elnine.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elzero.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elplus.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elminus.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elcross.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
+elequals.addEventListener("click",function(){display(solve(createdisplaystrbyclick(this)))});
+eldisplay.addEventListener("change",createdisplaystrbykeyboard);
 elClear.addEventListener("click",clear);
 elenable.addEventListener("click",enable);
 elDel.addEventListener("click",Del);
