@@ -182,6 +182,28 @@ function exec1()
    console.log("Hello World");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //event calls
 elone.addEventListener("click",display);
 eltwo.addEventListener("click",display);
