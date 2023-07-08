@@ -14,7 +14,6 @@ let elcross=document.getElementById("cross")
 let elequals=document.getElementById("equals")
 let eldisplay=document.getElementById("display")
 let elClear=document.getElementById("Clear")
-let elenable=document.getElementById("enable_typing");
 let elimg=document.getElementById("image");
 let eltable=document.getElementById("table");
 let elmbody=document.getElementById("mbody");
@@ -22,28 +21,55 @@ let eldark=document.getElementById("dark_or_default");
 let elheading=document.getElementById("heading");
 let ellight=document.getElementById("light");
 let elDel= document.getElementById("Delete");
+let elAns = document.getElementById("Ans");
 
 
-const display = (str7) => {eldisplay.value=str7;}
+
 
 const c_createdisplaystr = () => {
     let displaystr = "";
-    return {
-        "click":(obj) => {
-
-        if(obj==elequals);
-        else
-        displaystr += obj.textContent;
-
-        return displaystr;},
-        "keyboard":() => {
-            displaystr=eldisplay.value;
-            return displaystr;
+    const nodisplay = [elDel,elClear,elequals,eldisplay]
+    return () => {
+        return {
+            "click": (obj) => {
+                if(!(nodisplay.includes(obj)))
+                displaystr += obj.textContent;
+                return displaystr;
+            },
+            "keyboard":  () => {
+                displaystr=eldisplay.value;
+            },
+            "clear": () => {
+                displaystr="";
+            },
+            "Del": () => {
+                displaystr=displaystr.slice(0,displaystr.length-1);
+                eldisplay.value=displaystr;
+            },
+            "ansappendif": (str7) => {
+                const operators = ['x','+','-','\u00F7'];
+                if(operators.includes(displaystr[0]))
+                displaystr = "Ans" + displaystr;
+            }
+            
+          
         }
-}  
+        }
+      
+ 
 }
-const createdisplaystrbyclick = c_createdisplaystr().click;
-const createdisplaystrbykeyboard = c_createdisplaystr().keyboard;
+const createdisplaystr = c_createdisplaystr();
+
+const display = (str7) => {
+
+    createdisplaystr().ansappendif();
+
+    const operators = ['x','+','-','\u00F7'];
+    if(operators.includes(str7[0]))
+    str7 = "Ans"+str7;
+    
+    eldisplay.value=str7;
+}
 
 
 const multi_or_div = (str1) => {
@@ -128,7 +154,6 @@ const add_or_sub = (str2) => {
             result1=0;   
         }
     }
-    console.log(`add_or_sub = ${result1}`);
     return result1;
 }
 
@@ -165,7 +190,7 @@ for(let i = 0; i<op.length; i++)
         childstr="";
     }
 }
-    console.log(`findmultidivstr = ${parentrray}`);
+  
     return parentrray;
 }
 
@@ -174,7 +199,7 @@ const replacemultidivstrbyval = (str4,arr) => {
     {
         str4=str4.replaceAll(each,multi_or_div(each));
     }
-    console.log(`replacemultidivstrbyval = ${str4}`)
+
     return str4;
     
 }
@@ -196,64 +221,63 @@ const replacebracketsbyval = (str5) => {
     return str5;
 }
 
-const solve = (strwithbrac) => {
-    let strwithnobrac = replacebracketsbyval(strwithbrac);
-    console.log(`solve = ${add_or_sub(replacemultidivstrbyval(strwithnobrac,findmultidivstr(strwithnobrac)))}`)
-    return add_or_sub(replacemultidivstrbyval(strwithnobrac,findmultidivstr(strwithnobrac)));
-}
+const c_solve = () => { 
+    let ans;num_of_operations=0;
+return (strwithbrac) => {
 
-function clear(){
-    result=0;
-    i=0;
-    j=0;
-    num=[];
-    execop=[];
-    displaystr="";
+    if(strwithbrac.includes("Ans"))
+    {
+        if(num_of_operations==0)
+        {
+            alert("Please do one operation first, before using \"Ans\"");
+            return 0;
+        }
+        else
+        strwithbrac = strwithbrac.replaceAll("Ans",ans.toString());
+    }
+
+    console.log(strwithbrac);
+
+    let strwithnobrac = replacebracketsbyval(strwithbrac);
+    let result = add_or_sub(replacemultidivstrbyval(strwithnobrac,findmultidivstr(strwithnobrac)));
+
+    ans = result;
+    num_of_operations+=1;
+    clear();
+    return result;
+}
+}
+const solve = c_solve();
+
+const clear = () => {
+    createdisplaystr().clear();
     eldisplay.value="";
 }
-
-let on=1, off=1;
-function enable(){
-    on=(on+1)%2;
-    if(!(on)){
-    elimg.src="https://static.thenounproject.com/png/17427-200.png";
-    eltable.style.display="none";
-    elmbody.style.height="100px";
-   
+const c_darkmode = () => {
+    let off=1
+    return () => {
+        off=(off+1)%2;
+        if(!(off))
+        {  
+            ellight.src="https://simpleicon.com/wp-content/uploads/sun.png";
+            document.body.style.background="#353434";
+            elheading.style.color="white";
+            elmbody.style.background="black";
+            
+        }
+        else
+        {
+            ellight.src= "moon.png";
+            document.body.style.background="antiquewhite";
+            elheading.style.color="black";
+            elmbody.style.background="#54524e";
+        } 
     }
-    else
-    {
-        elimg.src="https://static.thenounproject.com/png/376597-200.png";
-        eltable.style.display="inline";
-        elmbody.style.height="375px";
-    }
-    
 }
-//darkmode func
+const darkmode = c_darkmode();
 
-function darkmode(){
-    off=(off+1)%2;
-    if(!(off))
-    {  
-        ellight.src="https://simpleicon.com/wp-content/uploads/sun.png";
-        document.body.style.background="#353434";
-        elheading.style.color="white";
-        elmbody.style.background="black";
-        
-    }
-    else
-    {
-        ellight.src= "moon.png";
-        document.body.style.background="antiquewhite";
-        elheading.style.color="black";
-        elmbody.style.background="#54524e";
-    } 
-}
-
-//delete function
-function Del(){
-    displaystr=displaystr.slice(0,displaystr.length-1);
-    eldisplay.value=displaystr;
+const del = () => {
+    createdisplaystr().Del();
 }
 
 
@@ -276,28 +300,22 @@ function Del(){
 
 
 
-
-
-
-
-//event calls
-elone.addEventListener("click",function(){display(createdisplaystrbyclick(this))});
-eltwo.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elthree.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elfour.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elfive.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elsix.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elseven.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-eleight.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elnine.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elzero.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elplus.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elminus.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elcross.addEventListener("click",function() {display(createdisplaystrbyclick(this))});
-elequals.addEventListener("click",function(){display(solve(createdisplaystrbyclick(this)))});
-eldisplay.addEventListener("change",createdisplaystrbykeyboard);
+elone.addEventListener("click",function(){display(createdisplaystr().click(this))});
+eltwo.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elthree.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elfour.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elfive.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elsix.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elseven.addEventListener("click",function() {display(createdisplaystr().click(this))});
+eleight.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elnine.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elzero.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elplus.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elminus.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elcross.addEventListener("click",function() {display(createdisplaystr().click(this))});
+elequals.addEventListener("click",function(){display(solve(createdisplaystr().click(this)))});
+eldisplay.addEventListener("change",function(){createdisplaystr().keyboard();});
 elClear.addEventListener("click",clear);
-elenable.addEventListener("click",enable);
-elDel.addEventListener("click",Del);
+elDel.addEventListener("click",function(){del()});
 eldark.addEventListener("click",darkmode);
-
+elAns.addEventListener("click",function(){display(createdisplaystr().click(this))});
