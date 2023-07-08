@@ -6,7 +6,7 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 
 #mbody{
     background-color:#54524e;
-    height:375px;
+    height:425px;
     width: 300px;
     top:150px;
     left: 600px;
@@ -67,12 +67,6 @@ body{
     background-color: antiquewhite;
 }
 
-#enable_typing{
-    height:fit-content;
-    width:fit-content;
-    top: 10px;
-    position: absolute;
-}
 img{
     height:39px;
     width:39px;
@@ -82,7 +76,11 @@ img{
 #dark_or_default{
     position:absolute;
     top:10px;
-    left: 60px;
+    left: 95%;
+    background: transparent;
+    border-radius: 15%;
+    outline-style: auto;
+    outline-color: antiquewhite;
 }
 
 #Clear{

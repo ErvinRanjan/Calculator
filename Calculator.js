@@ -22,7 +22,10 @@ let elheading=document.getElementById("heading");
 let ellight=document.getElementById("light");
 let elDel= document.getElementById("Delete");
 let elAns = document.getElementById("Ans");
-
+let eldivide = document.getElementById("divide");
+let eldot = document.getElementById("dot");
+let el_lpar = document.getElementById("lpar");
+let el_rpar = document.getElementById("rpar");
 
 
 
@@ -236,8 +239,6 @@ return (strwithbrac) => {
         strwithbrac = strwithbrac.replaceAll("Ans",ans.toString());
     }
 
-    console.log(strwithbrac);
-
     let strwithnobrac = replacebracketsbyval(strwithbrac);
     let result = add_or_sub(replacemultidivstrbyval(strwithnobrac,findmultidivstr(strwithnobrac)));
 
@@ -263,6 +264,8 @@ const c_darkmode = () => {
             document.body.style.background="#353434";
             elheading.style.color="white";
             elmbody.style.background="black";
+            eldark.style.outlineColor="#353434"
+
             
         }
         else
@@ -271,6 +274,9 @@ const c_darkmode = () => {
             document.body.style.background="antiquewhite";
             elheading.style.color="black";
             elmbody.style.background="#54524e";
+            eldark.style.outlineColor = "antiquewhite"
+
+
         } 
     }
 }
@@ -313,6 +319,10 @@ elzero.addEventListener("click",function() {display(createdisplaystr().click(thi
 elplus.addEventListener("click",function() {display(createdisplaystr().click(this))});
 elminus.addEventListener("click",function() {display(createdisplaystr().click(this))});
 elcross.addEventListener("click",function() {display(createdisplaystr().click(this))});
+eldivide.addEventListener("click",function() {display(createdisplaystr().click(this))});
+eldot.addEventListener("click",function() {display(createdisplaystr().click(this))});
+el_lpar.addEventListener("click",function() {display(createdisplaystr().click(this))});
+el_rpar.addEventListener("click",function() {display(createdisplaystr().click(this))});
 elequals.addEventListener("click",function(){display(solve(createdisplaystr().click(this)))});
 eldisplay.addEventListener("change",function(){createdisplaystr().keyboard();});
 elClear.addEventListener("click",clear);
