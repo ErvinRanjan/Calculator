@@ -260,22 +260,19 @@ const c_darkmode = () => {
         off=(off+1)%2;
         if(!(off))
         {  
-            ellight.src="https://simpleicon.com/wp-content/uploads/sun.png";
+            ellight.src="pictures/sun.png";
             document.body.style.background="#353434";
             elheading.style.color="white";
             elmbody.style.background="black";
-            eldark.style.outlineColor="#353434"
 
             
         }
         else
         {
-            ellight.src= "moon.png";
-            document.body.style.background="antiquewhite";
-            elheading.style.color="black";
-            elmbody.style.background="#54524e";
-            eldark.style.outlineColor = "antiquewhite"
-
+            ellight.src= "pictures/moon1.png";
+            document.body.style.background="#FCF6F5FF";
+            elheading.style.color="#FCF6F5FF";
+            elmbody.style.background="#89ABE3FF";
 
         } 
     }
