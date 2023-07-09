@@ -1,20 +1,24 @@
 #heading{
 color:black;
-text-align: center;
 font-family: Georgia, 'Times New Roman', Times, serif;
+color: #FCF6F5FF;
+font-size: xx-large;
+font-weight: bold;
+position: relative;
+top: -15px;
+left:60px;
+
 }
 
 #mbody{
-    background-color:#54524e;
+    background-color: #89ABE3FF;
     height:425px;
     width: 300px;
     top:150px;
     left: 600px;
-    position:absolute;
+    position:relative;
     outline-color: black;
-    outline-width: 10px;
     outline-style: auto;
-    border-color: black;
     border-radius: 20px;
     
 }
@@ -32,14 +36,16 @@ font-family: Georgia, 'Times New Roman', Times, serif;
     /* font-family: 'Times New Roman', Times, serif;
     font-weight: bold; */
     text-align: center;
+    outline-color: black;
+    outline-style: auto;
     
 }
 #equals{
     height: 52px;
     width: 52px;
-    position:absolute;
+    position:relative;
     top:20px;
-    left:225px;
+    left: 40px;
     font-size: x-large;
     border-radius: 15%;
 }
@@ -53,6 +59,7 @@ font-family: Georgia, 'Times New Roman', Times, serif;
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 15%;
+    background-color: #FCF6F5FF;
     
 }
 
@@ -64,19 +71,19 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body{
-    background-color: antiquewhite;
+    background-color: #FCF6F5FF;
+    margin: 0% 0% 0% 0%;
 }
 
 img{
     height:39px;
     width:39px;
-    position: relative;
 }
 
 #dark_or_default{
     position:absolute;
-    top:10px;
-    left: 95%;
+    left:95%;
+    top:12%;
     background: transparent;
     border-radius: 15%;
     outline-style: auto;
@@ -125,4 +132,22 @@ img{
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 5px;
+}
+
+#header{
+    background-color:#89ABE3FF;
+    width: 100%;
+    height:10%;
+    position: absolute;
+}
+html{
+    height: 100%;
+    overflow: hidden;
+}
+#calc{
+position: relative;
+top: -120%;
+left: 10px;
+height:50px;
+width: auto;
 }
