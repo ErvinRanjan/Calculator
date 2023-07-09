@@ -286,26 +286,6 @@ const del = () => {
     createdisplaystr().Del();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 elone.addEventListener("click",function(){display(createdisplaystr().click(this))});
 eltwo.addEventListener("click",function() {display(createdisplaystr().click(this))});
 elthree.addEventListener("click",function() {display(createdisplaystr().click(this))});
